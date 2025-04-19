@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/controller/subscription-service.controller.ts","./src/middleware/auth.middleware.ts","./src/model/subscription-service.model.ts","./src/route/subscription-service.route.ts"],"version":"5.8.3"}

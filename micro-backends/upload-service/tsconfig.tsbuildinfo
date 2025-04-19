@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/controller/upload-service.controller.ts","./src/middleware/auth.middleware.ts","./src/model/upload-service.model.ts","./src/route/upload-service.route.ts"],"version":"5.8.3"}

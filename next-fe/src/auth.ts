@@ -5,8 +5,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [Google],
   callbacks:{
     async jwt({token, account}){
-      if(account?.provider === "google"){
-        token.id = account.providerAccountId;
+      if(account?.id_token){
+        token.id = account.id_token;
       }
       return token;
     },

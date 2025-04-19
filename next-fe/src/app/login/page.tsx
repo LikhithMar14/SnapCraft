@@ -19,12 +19,12 @@ const LoginPage = () => {
 
   return (
     <div className="relative min-h-screen w-full bg-gray-50 flex items-center justify-center overflow-hidden">
-      {/* Enhanced navbar with better logo treatment */}
+
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200 px-6 py-4 flex items-center">
         <div className="flex items-center space-x-2"></div>
       </nav>
 
-      {/* Aceternity UI-inspired background elements */}
+
       <div className="absolute inset-0 overflow-hidden">
         {/* Gradient blob that follows mouse */}
         <div

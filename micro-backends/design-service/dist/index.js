@@ -17,6 +17,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const design_route_1 = __importDefault(require("./route/design.route"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 8001;
@@ -32,6 +33,7 @@ app.use((0, cors_1.default)());
 app.use((0, helmet_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
+app.use("/api/design", design_route_1.default);
 function startServer() {
     return __awaiter(this, void 0, void 0, function* () {
         try {

@@ -15,6 +15,7 @@ function authMiddleware(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         const authHeader = req.headers['authorization'];
         const token = authHeader === null || authHeader === void 0 ? void 0 : authHeader.split(' ')[1];
+        console.log(`Token From App Gateway: ${token}`);
         if (!token) {
             return res.status(401).json({
                 error: "Access denied. No token provided.",
@@ -27,17 +28,31 @@ function authMiddleware(req, res, next) {
                 audience: process.env.GOOGLE_CLIENT_ID,
             });
             const payload = ticket.getPayload();
-            req.user = payload;
+            if (!payload) {
+                return res.status(401).json({
+                    error: "Access denied. Invalid token payload.",
+                    message: "The token could not be verified properly.",
+                });
+            }
+            req.user = {
+                userId: payload.sub,
+                email: payload.email,
+                name: payload.name,
+                picture: payload.picture,
+            };
+            req.headers['x-user-id'] = payload.sub;
+            req.headers['x-user-email'] = payload.email;
+            req.headers['x-user-name'] = payload.name;
+            req.headers['x-user-picture'] = payload.picture;
             next();
         }
         catch (error) {
-            console.error("Error verifying token", error);
+            console.error("Error verifying token:", error);
             return res.status(401).json({
                 error: "Access denied. Invalid token.",
                 message: "Please provide a valid token in the Authorization header.",
             });
         }
-        next();
     });
 }
 exports.default = authMiddleware;

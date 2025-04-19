@@ -38,7 +38,7 @@ function Header() {
                     {session?.user?.name?.[0] || "U"}
                   </AvatarFallback>
                   <AvatarImage
-                    src={session?.user?.image || "/placeholder-user.jpg"}
+                    src={session?.user?.image || ""}
                   />
                 </Avatar>
                 <span className="text-sm font-medium hidden lg:block">

@@ -3,7 +3,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import mongoose from "mongoose";
-
+import designRoutes from "./route/design.route";
 dotenv.config();
 
 const app = express();
@@ -22,7 +22,7 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use("/api/design", designRoutes);
 
 async function startServer() {
   try{

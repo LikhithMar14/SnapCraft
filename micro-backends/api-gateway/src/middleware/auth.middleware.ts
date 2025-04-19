@@ -15,6 +15,7 @@ export interface AuthenticatedRequest extends Request {
 async function authMiddleware(req: AuthenticatedRequest, res: Response, next: NextFunction):Promise<any> {
     const authHeader = req.headers['authorization'];
     const token = authHeader?.split(' ')[1];
+    console.log(`Token From App Gateway: ${token}`);
 
     if (!token) {
         return res.status(401).json({
